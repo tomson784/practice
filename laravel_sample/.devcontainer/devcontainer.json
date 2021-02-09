@@ -1,0 +1,13 @@
+{
+    "name": "laravel-sample",
+    "dockerComposeFile": "../docker-compose.yml",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+        "james-yu.latex-workshop"
+    ],
+    "service": "app",
+    "workspaceFolder": "/ws",
+    "shutdownAction": "stopCompose"
+}

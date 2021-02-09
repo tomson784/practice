@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  # web:
+  #   image: httpd
+  #   ports:
+  #     - 8080:80
+  #   networks:
+  #     - app
+
+  app:
+    build:
+      context: ./app
+    volumes:
+      - ./app:/ws
+    tty: true
+    # networks:
+    #   - app
+
+  # db:
+  #   image: mysql
+  #   networks:
+  #     - app
+
+# networks:
+#   app:
+#     driver: "bridge"

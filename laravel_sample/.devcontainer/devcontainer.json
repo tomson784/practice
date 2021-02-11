@@ -8,6 +8,6 @@
         "james-yu.latex-workshop"
     ],
     "service": "app",
-    "workspaceFolder": "/ws",
+    "workspaceFolder": "/app",
     "shutdownAction": "stopCompose"
 }

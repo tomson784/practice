@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  ros_1:
+    image: ros:melodic
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.2
+    # environment: 
+    #   - ROS_IP
+    #   - ROS_MASTER
+
+  ros_2:
+    image: ros:melodic
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.3
+    # environment: 
+    #   - ROS_IP
+    #   - ROS_MASTER
+
+networks:
+  app_net:
+    name: ros_net
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/24

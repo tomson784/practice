@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  ros_master:
+    # image: ros:melodic
+    build: .
+    tty: true

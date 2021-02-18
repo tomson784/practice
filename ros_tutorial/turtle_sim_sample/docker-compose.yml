@@ -4,28 +4,30 @@ services:
   ros_master:
     image: ros:melodic
     tty: true
-    command: bash -c "bash /ros_entrypoint.sh && /bin/bash"
+    command: roscore
+    environment: 
+      - ROS_IP=172.30.0.2
+      - ROS_MASTER_URI=http://172.30.0.2:11311
     networks:
       ros_net:
         ipv4_address: 172.30.0.2
-    environment: 
-      - ROS_IP = 172.30.0.2
-      - ROS_MASTER_URI = http://172.30.0.2:11311
 
   ros_follower:
     image: ros:melodic
+    depends_on:
+          - ros_master
     tty: true
-    command: bash -c "bash /ros_entrypoint.sh && /bin/bash"
+    command: rostopic list
+    environment: 
+      - ROS_IP=172.30.0.3
+      - ROS_MASTER_URI=http://172.30.0.2:11311
     networks:
       ros_net:
         ipv4_address: 172.30.0.3
-    environment: 
-      - ROS_IP = 172.30.0.3
-      - ROS_MASTER_URI = http://172.30.0.2:11311
+    restart: always
 
 networks:
   ros_net:
-    # name: ros_net
     driver: bridge
     ipam:
       driver: default

@@ -4,6 +4,7 @@ services:
   ros_master:
     image: ros:melodic
     tty: true
+    command: bash -c "bash /ros_entrypoint.sh && /bin/bash"
     networks:
       ros_net:
         ipv4_address: 172.30.0.2
@@ -14,6 +15,7 @@ services:
   ros_follower:
     image: ros:melodic
     tty: true
+    command: bash -c "bash /ros_entrypoint.sh && /bin/bash"
     networks:
       ros_net:
         ipv4_address: 172.30.0.3

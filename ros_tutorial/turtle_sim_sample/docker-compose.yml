@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  ros_master:
+  ros-master:
     image: ros:melodic
     tty: true
-    command: roscore
+    # command: roscore
     environment: 
       - ROS_IP=172.30.0.2
       - ROS_MASTER_URI=http://172.30.0.2:11311
@@ -12,12 +12,12 @@ services:
       ros_net:
         ipv4_address: 172.30.0.2
 
-  ros_follower:
+  ros-follower:
     image: ros:melodic
     depends_on:
-          - ros_master
+          - ros-master
     tty: true
-    command: rostopic list
+    # command: rostopic list
     environment: 
       - ROS_IP=172.30.0.3
       - ROS_MASTER_URI=http://172.30.0.2:11311
@@ -25,6 +25,17 @@ services:
       ros_net:
         ipv4_address: 172.30.0.3
     restart: always
+
+    #ros-gui:
+    #image: tiryoh/ros-desktop-vnc:melodic
+    #port:
+    #shm_size:
+    #environment: 
+    #  - ROS_IP=172.30.0.3
+    #  - ROS_MASTER_URI=http://172.30.0.2:11311
+    #networks:
+    #  ros_net:
+    #    ipv4_address: 172.30.0.3
 
 networks:
   ros_net:

@@ -1,8 +1,9 @@
 version: '3'
 
 services:
-  ros_master:
-    image: ros:melodic
+  ros-master:
+    # image: ros:melodic
+    build: .
     tty: true
     networks:
       ros_net:
@@ -11,8 +12,9 @@ services:
       - ROS_IP=172.30.0.2
       - ROS_MASTER_URI=http://172.30.0.2:11311
 
-  ros_follower:
-    image: ros:melodic
+  ros-talker:
+    # image: ros:melodic
+    build: .
     tty: true
     networks:
       ros_net:
@@ -21,9 +23,19 @@ services:
       - ROS_IP=172.30.0.3
       - ROS_MASTER_URI=http://172.30.0.2:11311
 
+  ros-listener:
+    # image: ros:melodic
+    build: .
+    tty: true
+    networks:
+      ros_net:
+        ipv4_address: 172.30.0.4
+    environment: 
+      - ROS_IP=172.30.0.4
+      - ROS_MASTER_URI=http://172.30.0.2:11311
+
 networks:
   ros_net:
-    # name: ros_net
     driver: bridge
     ipam:
       driver: default

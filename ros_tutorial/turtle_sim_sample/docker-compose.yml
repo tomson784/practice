@@ -3,7 +3,7 @@ version: '3'
 services:
   ros-master:
     # image: ros:melodic
-    build: ./ros_cui
+    build: ./ros_master
     tty: true
     environment: 
       - ROS_IP=172.30.0.2
@@ -14,7 +14,7 @@ services:
 
   ros-client:
     # image: ros:melodic
-    build: ./ros_cui
+    build: ./ros_client
     tty: true
     environment: 
       - ROS_IP=172.30.0.3

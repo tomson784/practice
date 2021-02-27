@@ -2,12 +2,12 @@
 
 vscodeで以下のような記述をすることで，記述内容がノードとエッジで図示される．
 
- ```puml
- :git add でステージング;
- :git commit -m "コミットメッセージ";
- ```
+```puml
+:git add でステージング;
+:git commit -m "コミットメッセージ";
+```
 
- ```mermaid
- graph LR
- 実験 --> 論文
- ```
+```mermaid
+graph LR
+実験 --> 論文
+```
